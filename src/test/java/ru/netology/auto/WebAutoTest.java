@@ -22,11 +22,12 @@ public class WebAutoTest {
 
     @BeforeEach
     void setUp() {
-        driver = new ChromeDriver();
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
+        driver = new ChromeDriver();
     }
 
     @AfterEach
@@ -38,7 +39,6 @@ public class WebAutoTest {
     @Test
     void shouldShowSuccessPath() {
         driver.get("http://localhost:9999");
-//        WebElement form = driver.findElement(By.cssSelector("[data-test-id"));
         driver.findElement(By.cssSelector("[type =\"text\"]")).sendKeys("Джордж Милославский");
         driver.findElement(By.cssSelector("span[data-test-id='phone'] input")).sendKeys("+79118382007");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
